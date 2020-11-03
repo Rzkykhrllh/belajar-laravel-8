@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+
+class ageCheck
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle(Request $request, Closure $next)
+    {
+        if ($request->age < 18){
+            return redirect("/UnderAge");
+        }
+        // echo "<h1>i put evrything here</h1>";   
+
+        return $next($request);
+    }
+}
